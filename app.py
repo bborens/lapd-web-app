@@ -46,47 +46,12 @@ list_of_locations = {
 }
 
 # Initialize data frame
-df1 = pd.read_csv(
+df = pd.read_csv(
     "https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.00.csv", encoding='utf-8', engine='python',
     dtype=object,
 )
-df2 = pd.read_csv(
-    "https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.01.csv", encoding='utf-8', engine='python',
-    dtype=object,
-)
-df3 = pd.read_csv(
-    "https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.02.csv", encoding='utf-8', engine='python',
-    dtype=object,
-)
-df4 = pd.read_csv(
-    "https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.03.csv", encoding='utf-8', engine='python',
-    dtype=object,
-)
-df5 = pd.read_csv(
-    "https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.04.csv", encoding='utf-8', engine='python',
-    dtype=object,
-)
-df6 = pd.read_csv(
-    "https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.05.csv", encoding='utf-8', engine='python',
-    dtype=object,
-)
-df7 = pd.read_csv(
-    "https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.06.csv", encoding='utf-8', engine='python',
-    dtype=object,
-)
-df8 = pd.read_csv(
-    "https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.07.csv", encoding='utf-8', engine='python',
-    dtype=object,
-)
-df9 = pd.read_csv(
-    "https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.08.csv", encoding='utf-8', engine='python',
-    dtype=object,
-)
-df10 = pd.read_csv(
-    "https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.09.csv", encoding='utf-8', engine='python',
-    dtype=object,
-)
-df = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10], axis=0)
+
+#df = pd.concat([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10], axis=0)
 df["Date/Time"] = pd.to_datetime(df["Date/Time"], format="%Y-%m-%d %H:%M")
 df.index = df["Date/Time"]
 df.drop("Date/Time", 1, inplace=True)
