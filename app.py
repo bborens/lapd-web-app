@@ -52,12 +52,10 @@ mlab_uri = os.getenv('mongodb://LAPD-SYS:DATABASE1234@ds019472.mlab.com:19472/he
 mlab_collection = os.getenv('lapd-data')
 
 # Connect to MongoDB Instance:
-#codec_options = CodecOptions(document_class=RawBSONDocument)
 client = MongoClient(mlab_uri)
-db = client.get_default_database()
+db = mlab_uri
 collection = db.get_collection(
-    mlab_collection,
-    #codec_options=codec_options
+    mlab_collection
 )
 
 df = collection
