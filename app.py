@@ -54,10 +54,10 @@ mlab_collection = os.getenv('lapd-data')
 # Connect to MongoDB Instance:
 client = MongoClient(mlab_uri)
 db = client
-collection = db.mlab_collection
+collection1 = db.mlab_collection
 
 
-df = collection
+df = collection1
 
 def parse_dates(df):
   return pd.to_datetime(df['Date/Time'], format='%Y-%m-%d %H:%M')
