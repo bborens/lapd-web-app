@@ -46,7 +46,7 @@ list_of_locations = {
 }
 
 # Initialize data frame
-df = dd.read_csv('datetime.csv', engine='python', encoding='utf-8', )
+df = dd.read_csv('datetime.csv', engine='python', encoding='utf-8', header=None )
 df["Date/Time"] = pd.to_datetime(df["Date/Time"], format="%Y-%m-%d %H:%M")
 df.index = df["Date/Time"]
 df.drop("Date/Time", 1, inplace=True)
