@@ -66,7 +66,7 @@ def parse_dates(df):
 
 #df["Date/Time"] = pd.to_datetime(df["Date/Time"], format="%Y-%m-%d %H:%M")
 df.index = df["Date/Time"]
-df.drop("Date/Time", 1, inplace=True)
+#df.drop("Date/Time", 1, inplace=True)
 totalList = []
 for month in df.groupby(df.index.month):
     dailyList = []
