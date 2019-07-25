@@ -5,6 +5,7 @@ import dash_html_components as html
 import pandas as pd
 import numpy as np
 import pymongo
+import mongoengine
 from pymongo import MongoClient
 from dash.dependencies import Input, Output
 from plotly import graph_objs as go
@@ -52,12 +53,12 @@ mlab_uri = os.getenv('mongodb://LAPD-SYS:DATABASE1234@ds019472.mlab.com:19472/he
 mlab_collection = os.getenv('lapd-data')
 
 # Connect to MongoDB Instance:
-codec_options = CodecOptions(document_class=RawBSONDocument)
+#codec_options = CodecOptions(document_class=RawBSONDocument)
 client = MongoClient(mlab_uri)
 db = client.get_default_database()
 collection = db.get_collection(
     mlab_collection,
-    codec_options=codec_options
+    #codec_options=codec_options
 )
 
 df = collection
