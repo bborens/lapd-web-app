@@ -1,5 +1,4 @@
 dash==1.0.0
-pandas==0.24.1
 gunicorn==19.9.0
 pymongo==3.8.0
 dask==2.1.0
