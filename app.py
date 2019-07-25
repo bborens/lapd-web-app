@@ -56,7 +56,7 @@ for month in df.groupby(df.index.month):
     for day in month[1].groupby(month[1].index.day):
         dailyList.append(day[1])
     totalList.append(dailyList)
-totalList = np.from_array(totalList)
+totalList = np.array(totalList)
 
 # Layout of Dash App
 app.layout = html.Div(
