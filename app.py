@@ -1,11 +1,9 @@
 import dash
-import os
 import dash_core_components as dcc
 import dash_html_components as html
 import pandas as pd
 import numpy as np
-import pymongo
-from pymongo import MongoClient
+import dask.dataframe as dd
 from dash.dependencies import Input, Output
 from plotly import graph_objs as go
 from plotly.graph_objs import *
@@ -47,28 +45,28 @@ list_of_locations = {
 
 }
 
-# Connect to Heroku mLab MongoDB Collection
-mlab_uri = os.getenv('mongodb://LAPD-SYS:DATABASE1234@ds019472.mlab.com:19472/heroku_5jfbfxcl')
-mlab_collection = os.getenv('lapd-data')
-
-# Connect to MongoDB Instance:
-client = MongoClient(mlab_uri)
-db = client
-collection = db.mlab_collection
-
-
-df = collection
-
+# Initialize data frame
+df1 = dd.read_csv("https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.00.csv")
+df2 = dd.read_csv("https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.01.csv")
+df3 = dd.read_csv("https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.02.csv")
+df4 = dd.read_csv("https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.03.csv")
+df5 = dd.read_csv("https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.04.csv")
+df6 = dd.read_csv("https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.05.csv"
+df7 = dd.read_csv("https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.06.csv")
+df8 = dd.read_csv("https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.07.csv")
+df9 = dd.read_csv("https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.08.csv")
+df10 = dd.read_csv("https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.09.csv")
+df = dd.merge([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10], axis=0)
 df["Date/Time"] = pd.to_datetime(df["Date/Time"], format="%Y-%m-%d %H:%M")
 df.index = df["Date/Time"]
 df.drop("Date/Time", 1, inplace=True)
 totalList = []
-for month in df.groupby(df.index.month):
+for month in dd.groupby(df.index.month):
     dailyList = []
     for day in month[1].groupby(month[1].index.day):
         dailyList.append(day[1])
     totalList.append(dailyList)
-totalList = np.array(totalList)
+totalList = da.from_array(totalList)
 
 # Layout of Dash App
 app.layout = html.Div(
@@ -510,5 +508,4 @@ def update_graph(datePicked, selectedData, selectedLocation):
     )
 
 
-##if __name__ == "__main__":
-  ##  app.run_server(debug=True)
+
