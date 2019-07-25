@@ -54,9 +54,8 @@ mlab_collection = os.getenv('lapd-data')
 # Connect to MongoDB Instance:
 client = MongoClient(mlab_uri)
 db = client
-collection = db.get_collection(
-    mlab_collection
-)
+collection = db.mlab_collection
+
 
 df = collection
 
