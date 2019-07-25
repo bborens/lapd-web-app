@@ -57,9 +57,9 @@ df8 = dd.read_csv("https://raw.githubusercontent.com/bborens/datasets/master/dat
 df9 = dd.read_csv("https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.08.csv")
 df10 = dd.read_csv("https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.09.csv")
 df = dd.merge(df1, df2, df3, df4, df5, df6, df7, df8, df9, df10, left_index=True, right_index=True)
-df["Date/Time"] = pd.to_datetime(df["Date/Time"], format="%Y-%m-%d %H:%M")
-df.index = df["Date/Time"]
-df.drop("Date/Time", 1, inplace=True)
+#df["Date/Time"] = pd.to_datetime(df["Date/Time"], format="%Y-%m-%d %H:%M")
+#df.index = df["Date/Time"]
+#df.drop("Date/Time", 1, inplace=True)
 totalList = []
 for month in dd.groupby(df.index.month):
     dailyList = []
