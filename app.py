@@ -5,7 +5,6 @@ import dash_html_components as html
 import pandas as pd
 import numpy as np
 import pymongo
-import mongoengine
 from pymongo import MongoClient
 from dash.dependencies import Input, Output
 from plotly import graph_objs as go
