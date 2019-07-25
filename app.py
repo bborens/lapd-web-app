@@ -51,12 +51,12 @@ df["Date/Time"] = pd.to_datetime(df["Date/Time"], format="%Y-%m-%d %H:%M")
 df.index = df["Date/Time"]
 df.drop("Date/Time", 1, inplace=True)
 totalList = []
-for month in dd.groupby(df.index.month):
+for month in pd.groupby(df.index.month):
     dailyList = []
     for day in month[1].groupby(month[1].index.day):
         dailyList.append(day[1])
     totalList.append(dailyList)
-totalList = da.from_array(totalList)
+totalList = pd.from_array(totalList)
 
 # Layout of Dash App
 app.layout = html.Div(
