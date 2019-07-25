@@ -56,7 +56,7 @@ df7 = dd.read_csv("https://raw.githubusercontent.com/bborens/datasets/master/dat
 df8 = dd.read_csv("https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.07.csv")
 df9 = dd.read_csv("https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.08.csv")
 df10 = dd.read_csv("https://raw.githubusercontent.com/bborens/datasets/master/datetime.part.09.csv")
-df = dd.merge([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10], axis=0)
+df = dd.merge([df1, df2, df3, df4, df5, df6, df7, df8, df9, df10])
 df["Date/Time"] = pd.to_datetime(df["Date/Time"], format="%Y-%m-%d %H:%M")
 df.index = df["Date/Time"]
 df.drop("Date/Time", 1, inplace=True)
