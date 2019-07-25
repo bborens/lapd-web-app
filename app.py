@@ -62,7 +62,7 @@ df = col
 def parse_dates(df):
   return pd.to_datetime(df['Date/Time'], format='%Y-%m-%d %H:%M')
 
-df.map_partitions(parse_dates)
+#df.map_partitions(parse_dates)
 
 #df["Date/Time"] = pd.to_datetime(df["Date/Time"], format="%Y-%m-%d %H:%M")
 df.index = df["Date/Time"]
